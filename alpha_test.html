@@ -1,0 +1,843 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-language" content="en">
+<title>Alpha Industry Park - Phase A / SAM - Property.cc</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="format-detection" content="telephone=no">
+
+<script type="text/javascript" src="http://sam.property.cc/js/jquery-1.8.3.min.js"></script>
+	<link href="http://sam.property.cc/boostrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="http://sam.property.cc/boostrap/css/datepicker.css" rel="stylesheet" type="text/css">
+	<script src="http://sam.property.cc/boostrap/js/bootstrap.min.js"></script>
+	<script src="http://sam.property.cc/js/bootstrap.typeahead.js"></script>
+	<script src="http://sam.property.cc/boostrap/js/bootstrap-datepicker.js"></script>
+	<script src="http://sam.property.cc/js/price_format.js"></script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="http://sam.property.cc/boostrap/js/html5shiv.js"></script>
+	  <script src="http://sam.property.cc/boostrap/js/respond.min.js"></script>
+	<![endif]-->
+	<link href="http://sam.property.cc/css/ajaxupload.css" rel="stylesheet" type="text/css">
+	<link href="http://sam.property.cc/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+	<link href="http://sam.property.cc/boostrap/css/custom.css?v=6.0.4.9.9.9" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://sam.property.cc/js/highcharts.js?07112013"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/highcharts.data.js?07112013"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/highcharts.drilldown.js?07112013"></script>
+<script>
+var site_url='http://sam.property.cc/';
+</script>
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="http://sam.property.cc/js/jquery.floatThead.js"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/ajaxupload.3.5.js?07112013"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/script.js?20140702"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/custom.js"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="http://sam.property.cc/js/lang/english.js?20032013"></script>
+</head>
+<body onload="Ponload()">
+<!-- Static navbar -->
+<style>
+/*.nav *{
+	z-index:1;
+}
+.navbar-right *{
+	z-index:0;
+}*/
+.navbar-default .navbar-toggle{
+	border-color:#999
+}
+.navbar-default .navbar-toggle .icon-bar{
+	background-color:#999
+}
+</style>
+
+
+<style>
+#total_visitor{
+	position:absolute;top:-20px;right:0
+}
+.floor_no,.floor_no_top{
+	background-color:lightgrey !important;
+}
+.unit_no,.unit_no_top,#more_unit_no{
+	background-color:lightgrey !important;
+}
+.unit_no_top+.unit_no_top{
+    border-left: 1px solid lightgrey;
+}
+.floor_no,.floor_no_top{
+	color:black !important;
+	text-align:center;
+	vertical-align:middle !important;
+	line-height:50px !important;
+	font-size:20px;
+	cursor:default !important;
+}
+.unit_no,.unit_no_top2,#main_table td,.floor_no_top{
+	font-size:13px;
+	text-align:center;
+}
+.floor_no{
+	width:50px !important;
+	min-width:50px !important;
+	max-width:50px !important;
+}
+#main_table td,.floor_no_top{
+	background-color:white;
+}
+.empty_row .floor_no{
+	line-height:10px !important;
+}
+#main_table{
+	background-color:#D3D3D3 !important;
+}
+.empty_row td{
+	background-color:#D3D3D3 !important;
+	max-height: 10px !important;
+	height: 10px !important;
+	font-size:1px !important;
+	padding:0  !important;
+}
+.not_match{
+	visibility:hidden;
+}
+.Available,.Released,.Available td,.Released td{
+	background-color:lightgreen !important;
+	color:black !important;
+	cursor:pointer;
+}
+.Reserved td,.Reserved,.Pending  td,.Pending {
+	background-color:lightblue !important;
+	color:black !important;
+	cursor:pointer;
+}
+.Sold td,.Sold,.Booked td,.Booked{
+	background-color:lightpink !important;
+	color:black !important;
+	cursor:pointer;
+}
+.Deleted td,.Deleted{
+	background-color:black !important;
+	color:black !important;
+	cursor:pointer;
+}
+.Bumi td,.Bumi{
+	background-color:orange !important;
+	color:black !important;
+	cursor:pointer;
+}.floor_no_top{
+	display:block;
+}
+.unit_no_top{
+	padding:8px;
+}
+
+.floor_no_top{
+	width:100%
+}
+.floor_no_top,.unit_no_top{
+	vertical-align: top;
+	padding:8px;
+}
+.unit_no_top{
+	display:inline-block;
+	*display:inline;
+	float:left;
+}
+.modal-footer{
+	text-align:center
+}
+#main_table{
+    border: 1px solid #DDDDDD;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    margin-bottom: 0px;
+}
+.hint_box{
+	margin-left:10px;float:left; width:18px; height:18px;
+	cursor:default
+}
+#myClose{
+	padding: 8px;
+}
+.popover {
+	z-index:2000;
+}
+.haspopover:hover{
+	cursor:not-allowed
+}
+#date:hover{
+	cursor:pointer
+}
+@media (min-width: 768px) {
+	.control-label{
+		margin-bottom:20px
+	}
+	.form-group{
+		margin-bottom:15px
+	}
+}
+.popover-content{
+	background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #A94442;
+}
+.modal label{
+	text-align:left !important
+}
+.brp{
+	margin-bottom:10px;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+	padding-top:5px;
+	padding-bottom:2px;
+}
+</style>
+<div class="large_div">
+<div class="brp visible-sm"></div>
+<script language="JavaScript">
+var by_percentage=1;
+var by_national=1;
+var isActive = false;
+var count=0;
+var count2=99;
+var count3=0;
+var count4=0;
+var is_unit_view=false;
+var phase_id=0;
+var unit_id=0;
+var phase_s=false;var unit_s=false;var default_btn_txt='Reserve'
+var is_visit=false;
+phase_id=58;
+</script>
+<script type="text/javascript" src="http://sam.property.cc/js/page/layout_plan/page_count.js?"></script>
+<script>
+$(document).ready(function(){	$("#btnSearch").click(function(){
+		$("#form1").submit();
+	});
+	$(".nav-tabs").find("a").click(function(){
+		if($(this).attr("href")=="#home"){
+			$("#myModal").find(".modal-footer").show();
+		}else{
+			$("#myModal").find(".modal-footer").hide();
+		}
+	});
+	$(".haspopover").popover();
+	$('#myModal').on('hidden.bs.modal', function () {
+	  $('.popover').fadeOut("fast");
+	  is_unit_view=false;
+	})
+	$('#myModal').scroll(function(){
+		$('.popover').fadeOut("fast");
+	});
+	$(".modal-footer .btn").click(function(){
+		error=false;
+		if($(this).text()=='Reserve'||$(this).text()=='Book'){
+			$("#action").val('2');
+			after_discount=$('#after_discount').val();
+			after_discount=after_discount.replace(/,/g,"");
+			after_discount*=1;
+			info_cur_price=$('#info_cur_price').text();
+			info_cur_price*=1;
+			// console.log(info_cur_price+"<"+after_discount);
+			if($('#after_discount').val().trim()==''||info_cur_price<after_discount){
+				$('#after_discount').popover('show');
+				error=true;
+			}
+			if($('#customer_name').val().trim()==''){
+				$('#customer_name').popover('show');
+				error=true;
+			}
+			if($('#customer_phone').val().trim()==''){
+				$('#customer_phone').popover('show');
+				error=true;
+			}
+			if($('#date').length){
+			if($('#date').val().trim()==''){
+				$('#date').popover('show');
+				error=true;
+			}
+			}
+			if($('#customer_id').val().trim()==''){
+				$('#customer_id').popover('show');
+				error=true;
+			}
+			if($('#nationality').val().trim()==''){
+				$('#nationality').popover('show');
+				error=true;
+			}
+						if($("#upload_stat").val()==1){
+				$('#status').popover('show');
+				error=true;
+			}else if($("#upload_stat").val()==-1){
+				$('#upload').popover('show');
+				error=true;
+			}		}else if($(this).text()=='Release'){
+			$("#action").val('4');
+		}
+		if(!error){
+			$("#unit_form").submit();
+		}
+	});
+	$("#rightop_hint").show();
+});
+
+function delete_file(type,index){
+	if (!confirm(lang_confirm_delete)) { return false; } else {
+	$.ajax({
+		url: site_url+"/unit/delete_file/"+type+"/"+index+"/310",
+		type: "POST",
+		cache: false,
+		success: function (data) {
+			$("."+type).remove();
+			$("#upload_stat").val(-1);
+			$('#upload').removeClass("hidden");
+		}
+	});
+	}
+}
+</script>
+		<br><div id="countStatus" class="alert alert-sm alert-info hidden"></div>
+			<div id="rightop_hint" style="float: right;  padding-right: 15px;">
+	<span id="available_hint">
+		<span class="Available hint_box">&nbsp;</span><span style="float:left">&nbsp;Available</span>
+	</span>
+		<span id="rs_hint">
+		<span class="Reserved hint_box">&nbsp;</span><span style="float:left">&nbsp;Reserved</span>
+	</span>
+		<span id="sold_hint">
+		<span class="Sold hint_box">&nbsp;</span><span style="float:left">&nbsp;Booked</span>
+	</span>
+			<span id="rl_bumi">
+							<span class="Bumi hint_box">&nbsp;</span>
+
+			<span style="float:left">&nbsp;Bumi Lot</span>
+	</span>
+			<span id="rl_bumi_release">
+					<span class="Bumi Bumi_Release hint_box">&nbsp;</span>
+
+		<span style="float:left">&nbsp;Bumi-Release Lot</span>
+	</span>
+
+			<span id="rl_spa">
+					</span>
+		</div>
+
+		<div id="point"></div>
+
+		<br>
+<div style="position:relative">
+<div id="total_visitor" style="position:absolute;top:-20px;right:0"></div>
+</div>
+<div id="main_table" class="table-responsive landed_view-m">
+	<div id="floor_point"></div>
+	<style type="text/css">
+
+.Bumi_Release_strok{
+	border: 0px solid #000 !important;
+	border-left: 1px solid #FFA500 !important;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 3px;
+  margin-left: 6px;
+  height: 22px;
+}
+
+.Bumi_strok{
+	border: 0px solid #000 !important;
+	border-left: 2px solid #FFA500 !important;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 3px;
+  margin-left: 6px;
+  height: 22px;
+}
+
+.SPA_Singed_strok{
+	border: 0px solid #000 !important;
+	border-left: 2px solid #FFA500 !important;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 3px;
+  margin-left: 6px;
+  height: 22px;
+}
+
+.Bumi_Release_border{
+	background-color: #FFF !important;
+	border: 2px solid #FFA500 !important;
+	margin-left: 0px;
+}
+
+.Bumi_border{
+	background-color: #FFF !important;
+	border: 1px solid #FFA500 !important;
+	margin-left: 0px;
+}
+
+.hint_box{
+	border: 1px solid #000;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+</style>
+
+<div style="display: block; background: url(&quot;http://sam.property.cc/images/58.jpg&quot;); position: relative; padding: 0px; width: 1140px; height: 446px;"><canvas style="width: 1140px; height: 446px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;" width="1140" height="446"></canvas><canvas style="width: 1140px; height: 446px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;" height="446" width="1140"></canvas><img id="landed_layout" src="http://sam.property.cc/images/58.jpg" width="1140" height="446" alt="Map" usemap="#map" class="maphilighted" style="opacity: 0; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;"></div>
+
+
+<map name="map">
+   <span id="14503" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0017<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14503" shape="rect" data-status="status-available" coords="823,244,871,334" href="javascript:void(0)" alt="SB0017" title="SB0017" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14502" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0016<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14502" shape="rect" data-status="status-available" coords="781,244,822,334" href="javascript:void(0)" alt="SB0016" title="SB0016" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14501" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0015<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14501" shape="rect" data-status="status-available" coords="739,244,779,334" href="javascript:void(0)" alt="SB0015" title="SB0015" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14500" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0014<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14500" shape="rect" data-status="status-available" coords="700,245,737,334" href="javascript:void(0)" alt="SB0014" title="SB0014" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14499" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0013<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14499" shape="rect" data-status="status-available" coords="663,244,699,334" href="javascript:void(0)" alt="SB0013" title="SB0013" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14498" data-status="status-void" class="preload-data status-available">
+      <h2>#SB0012<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14498" shape="rect" data-status="status-void" coords="622,244,662,334" href="javascript:void(0)" alt="SB0012" title="SB0012" rel="ADD8E6" fill="ADD8E6" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14497" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0011<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14497" shape="rect" data-status="status-available" coords="573,244,621,334" href="javascript:void(0)" alt="SB0011" title="SB0011" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14496" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0010<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14496" shape="rect" data-status="status-available" coords="524,244,572,333" href="javascript:void(0)" alt="SB0010" title="SB0010" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14495" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0009<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14495" shape="rect" data-status="status-available" coords="482,244,522,334" href="javascript:void(0)" alt="SB0009" title="SB0009" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14494" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0008<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14494" shape="rect" data-status="status-available" coords="445,245,480,334" href="javascript:void(0)" alt="SB0008" title="SB0008" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14493" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0007<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14493" shape="rect" data-status="status-available" coords="406,245,443,334" href="javascript:void(0)" alt="SB0007" title="SB0007" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14492" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0006<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14492" shape="rect" data-status="status-available" coords="364,245,405,334" href="javascript:void(0)" alt="SB0006" title="SB0006" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14491" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0005<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14491" shape="rect" data-status="status-available" coords="315,244,363,334" href="javascript:void(0)" alt="SB0005" title="SB0005" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14490" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0004<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14490" shape="rect" data-status="status-available" coords="274,245,315,334" href="javascript:void(0)" alt="SB0004" title="SB0004" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14489" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0003<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14489" shape="rect" data-status="status-available" coords="226,245,272,334" href="javascript:void(0)" alt="SB0003" title="SB0003" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14488" data-status="status-void" class="preload-data status-available">
+      <h2>#SB0002<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14488" shape="rect" data-status="status-void" coords="177,244,224,334" href="javascript:void(0)" alt="SB0002" title="SB0002" rel="ADD8E6" fill="ADD8E6" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14487" data-status="status-available" class="preload-data status-available">
+      <h2>#SB0001<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Bungalow, 4000 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14487" shape="rect" data-status="status-available" coords="128,241,176,334" href="javascript:void(0)" alt="SB0001" title="SB0001" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14486" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0031<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14486" shape="poly" data-status="status-available" coords="907,62,907,114,999,113,998,82" href="javascript:void(0)" alt="SSD0031" title="SSD0031" rel="FFA500" fill="FFA500" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14485" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0030<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14485" shape="rect" data-status="status-available" coords="682,336,723,428" href="javascript:void(0)" alt="SSD0030" title="SSD0030" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14484" data-status="status-booked" class="preload-data status-available">
+      <h2>#SSD0029<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14484" shape="rect" data-status="status-booked" coords="633,335,681,428" href="javascript:void(0)" alt="SSD0029" title="SSD0029" rel="ADD8E6" fill="ADD8E6" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14483" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0028<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14483" shape="rect" data-status="status-available" coords="909,114,999,143" href="javascript:void(0)" alt="SSD0028" title="SSD0028" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14482" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0027<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14482" shape="rect" data-status="status-available" coords="908,144,999,174" href="javascript:void(0)" alt="SSD0027" title="SSD0027" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14481" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0026<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14481" shape="rect" data-status="status-available" coords="908,176,999,205" href="javascript:void(0)" alt="SSD0026" title="SSD0026" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14480" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0025<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14480" shape="rect" data-status="status-available" coords="908,205,999,235" href="javascript:void(0)" alt="SSD0025" title="SSD0025" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14479" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0024<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14479" shape="rect" data-status="status-available" coords="908,236,999,264" href="javascript:void(0)" alt="SSD0024" title="SSD0024" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14478" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0023<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14478" shape="rect" data-status="status-available" coords="908,266,999,300" href="javascript:void(0)" alt="SSD0023" title="SSD0023" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14477" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0022<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14477" shape="rect" data-status="status-available" coords="908,301,998,334" href="javascript:void(0)" alt="SSD0022" title="SSD0022" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14476" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0021<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14476" shape="rect" data-status="status-available" coords="955,336,998,428" href="javascript:void(0)" alt="SSD0021" title="SSD0021" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14475" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0020<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14475" shape="rect" data-status="status-available" coords="907,336,955,428" href="javascript:void(0)" alt="SSD0020" title="SSD0020" rel="FFA500" fill="FFA500" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14474" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0019<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14474" shape="rect" data-status="status-available" coords="856,335,907,428" href="javascript:void(0)" alt="SSD0019" title="SSD0019" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14473" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0018<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14473" shape="rect" data-status="status-available" coords="813,335,856,428" href="javascript:void(0)" alt="SSD0018" title="SSD0018" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14472" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0017<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14472" shape="rect" data-status="status-available" coords="765,336,813,428" href="javascript:void(0)" alt="SSD0017" title="SSD0017" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14471" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0016<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14471" shape="rect" data-status="status-available" coords="724,335,765,428" href="javascript:void(0)" alt="SSD0016" title="SSD0016" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14470" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0015<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14470" shape="rect" data-status="status-available" coords="591,335,632,428" href="javascript:void(0)" alt="SSD0015" title="SSD0015" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14469" data-status="status-void" class="preload-data status-available">
+      <h2>#SSD0014<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14469" shape="rect" data-status="status-void" coords="548,335,590,428" href="javascript:void(0)" alt="SSD0014" title="SSD0014" rel="ADD8E6" fill="ADD8E6" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14468" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0013<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14468" shape="rect" data-status="status-available" coords="499,335,547,428" href="javascript:void(0)" alt="SSD0013" title="SSD0013" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14467" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0012<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14467" shape="rect" data-status="status-available" coords="459,335,499,428" href="javascript:void(0)" alt="SSD0012" title="SSD0012" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14466" data-status="status-booked" class="preload-data status-available">
+      <h2>#SSD0011<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14466" shape="rect" data-status="status-booked" coords="414,335,458,428" href="javascript:void(0)" alt="SSD0011" title="SSD0011" rel="FFB6C1" fill="FFB6C1" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14465" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0010<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14465" shape="rect" data-status="status-available" coords="368,335,413,428" href="javascript:void(0)" alt="SSD0010" title="SSD0010" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14464" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0009<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14464" shape="rect" data-status="status-available" coords="318,335,367,428" href="javascript:void(0)" alt="SSD0009" title="SSD0009" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14463" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0008<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14463" shape="rect" data-status="status-available" coords="275,336,318,428" href="javascript:void(0)" alt="SSD0008" title="SSD0008" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14462" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0007<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14462" shape="rect" data-status="status-available" coords="227,335,275,428" href="javascript:void(0)" alt="SSD0007" title="SSD0007" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14461" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0006<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14461" shape="rect" data-status="status-available" coords="178,335,227,428" href="javascript:void(0)" alt="SSD0006" title="SSD0006" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14460" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0005<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14460" shape="rect" data-status="status-available" coords="128,335,178,428" href="javascript:void(0)" alt="SSD0005" title="SSD0005" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14459" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0004<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14459" shape="poly" data-status="status-available" coords="25,371,24,423,28,422,32,428,127,429,127,372" href="javascript:void(0)" alt="SSD0004" title="SSD0004" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14458" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0003<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14458" shape="rect" data-status="status-available" coords="25,323,127,370" href="javascript:void(0)" alt="SSD0003" title="SSD0003" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14457" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0002<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14457" shape="poly" data-status="status-available" coords="78,207,78,323,128,322,128,241,100,229" href="javascript:void(0)" alt="SSD0002" title="SSD0002" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14456" data-status="status-available" class="preload-data status-available">
+      <h2>#SSD0001<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Semi-D, 3600 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14456" shape="poly" data-status="status-available" coords="65,206,79,207,79,322,24,323,25,233,31,223,53,214" href="javascript:void(0)" alt="SSD0001" title="SSD0001" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14455" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0035<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14455" shape="rect" data-status="status-available" coords="252,106,294,195" href="javascript:void(0)" alt="SL0035" title="SL0035" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14454" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0034<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14454" shape="rect" data-status="status-available" coords="296,106,336,195" href="javascript:void(0)" alt="SL0034" title="SL0034" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14453" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0033<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14453" shape="rect" data-status="status-available" coords="337,105,378,195" href="javascript:void(0)" alt="SL0033" title="SL0033" rel="FFA500" fill="FFA500" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14452" data-status="status-booked" class="preload-data status-available">
+      <h2>#SL0032<span>(Alpha Industry Park - Phase A, RM 200,000)</span></h2>
+      <p>RM 200,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14452" shape="rect" data-status="status-booked" coords="380,107,426,195" href="javascript:void(0)" alt="SL0032" title="SL0032" rel="FFB6C1" fill="FFB6C1" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14451" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0031<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14451" shape="rect" data-status="status-available" coords="429,106,469,195" href="javascript:void(0)" alt="SL0031" title="SL0031" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14450" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0030<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14450" shape="rect" data-status="status-available" coords="470,105,512,195" href="javascript:void(0)" alt="SL0030" title="SL0030" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14449" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0029<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14449" shape="rect" data-status="status-available" coords="512,106,549,195" href="javascript:void(0)" alt="SL0029" title="SL0029" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14448" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0028<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14448" shape="rect" data-status="status-available" coords="551,106,587,195" href="javascript:void(0)" alt="SL0028" title="SL0028" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14447" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0027<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14447" shape="rect" data-status="status-available" coords="588,106,629,195" href="javascript:void(0)" alt="SL0027" title="SL0027" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14446" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0026<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14446" shape="rect" data-status="status-available" coords="630,105,671,195" href="javascript:void(0)" alt="SL0026" title="SL0026" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14445" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0025<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14445" shape="rect" data-status="status-available" coords="673,105,720,195" href="javascript:void(0)" alt="SL0025" title="SL0025" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14444" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0024<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14444" shape="rect" data-status="status-available" coords="721,105,768,196" href="javascript:void(0)" alt="SL0024" title="SL0024" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14443" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0023<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14443" shape="rect" data-status="status-available" coords="770,105,810,195" href="javascript:void(0)" alt="SL0023" title="SL0023" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14442" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0022<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14442" shape="poly" data-status="status-available" coords="812,105,859,106,859,186,852,196,811,195" href="javascript:void(0)" alt="SL0022" title="SL0022" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14441" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0021<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14441" shape="poly" data-status="status-available" coords="811,15,852,15,859,25,859,106,811,105" href="javascript:void(0)" alt="SL0021" title="SL0021" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14440" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0020<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14440" shape="rect" data-status="status-available" coords="769,16,810,104" href="javascript:void(0)" alt="SL0020" title="SL0020" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14439" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0019<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14439" shape="rect" data-status="status-available" coords="721,16,768,104" href="javascript:void(0)" alt="SL0019" title="SL0019" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14438" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0018<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14438" shape="rect" data-status="status-available" coords="673,15,720,104" href="javascript:void(0)" alt="SL0018" title="SL0018" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14437" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0017<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14437" shape="rect" data-status="status-available" coords="631,16,671,104" href="javascript:void(0)" alt="SL0017" title="SL0017" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14436" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0016<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14436" shape="rect" data-status="status-available" coords="588,16,629,105" href="javascript:void(0)" alt="SL0016" title="SL0016" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14435" data-status="status-void" class="preload-data status-available">
+      <h2>#SL0015<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14435" shape="rect" data-status="status-void" coords="551,16,587,105" href="javascript:void(0)" alt="SL0015" title="SL0015" rel="ADD8E6" fill="ADD8E6" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14434" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0014<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14434" shape="rect" data-status="status-available" coords="513,16,549,104" href="javascript:void(0)" alt="SL0014" title="SL0014" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14433" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0013<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14433" shape="rect" data-status="status-available" coords="470,15,511,104" href="javascript:void(0)" alt="SL0013" title="SL0013" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14432" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0012<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14432" shape="rect" data-status="status-available" coords="429,15,469,104" href="javascript:void(0)" alt="SL0012" title="SL0012" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14431" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0011<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14431" shape="rect" data-status="status-available" coords="380,15,427,104" href="javascript:void(0)" alt="SL0011" title="SL0011" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14430" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0010<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14430" shape="rect" data-status="status-available" coords="338,15,379,104" href="javascript:void(0)" alt="SL0010" title="SL0010" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14429" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0009<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14429" shape="rect" data-status="status-available" coords="296,15,336,104" href="javascript:void(0)" alt="SL0009" title="SL0009" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14428" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0008<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14428" shape="rect" data-status="status-available" coords="253,15,294,105" href="javascript:void(0)" alt="SL0008" title="SL0008" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14427" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0007<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14427" shape="poly" data-status="status-available" coords="114,165,114,172,139,194,232,194,231,166" href="javascript:void(0)" alt="SL0007" title="SL0007" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14426" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0006<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14426" shape="poly" data-status="status-available" coords="122,142,112,158,113,164,231,165,231,142" href="javascript:void(0)" alt="SL0006" title="SL0006" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14425" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0005<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14425" shape="poly" data-status="status-available" coords="131,117,122,141,230,141,231,117" href="javascript:void(0)" alt="SL0005" title="SL0005" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14424" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0004<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14424" shape="poly" data-status="status-available" coords="134,94,132,117,232,117,231,94" href="javascript:void(0)" alt="SL0004" title="SL0004" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14423" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0003<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14423" shape="poly" data-status="status-available" coords="135,70,231,70,231,92,134,92" href="javascript:void(0)" alt="SL0003" title="SL0003" rel="FFA500" fill="FFA500" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14422" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0002<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14422" shape="poly" data-status="status-available" coords="135,45,135,69,231,69,232,45" href="javascript:void(0)" alt="SL0002" title="SL0002" rel="FFA500" fill="FFA500" opacity="0.5" data-reserved-agent-id="0">
+   <span id="14421" data-status="status-available" class="preload-data status-available">
+      <h2>#SL0001<span>(Alpha Industry Park - Phase A, RM 300,000)</span></h2>
+      <p>RM 300,000, 2 Storey Link, 2200 sq.ft</p>
+   </span>
+   <area class="access_load_modal" data-unit_id="14421" shape="poly" data-status="status-available" coords="135,23,143,15,231,16,231,44,135,43" href="javascript:void(0)" alt="SL0001" title="SL0001" rel="90EE90" fill="90EE90" opacity="0.5" data-reserved-agent-id="0">
+</map>
+
+<script type="text/javascript" src="http://sam.property.cc/js/jquery.maphilight.min.js?07112013"></script>
+<script>
+
+$(document).ready(function(){
+
+	$("#rightop_hint").show();
+	$('#landed_layout').maphilight({
+		strokeColor: '56B2BC',
+		strokeOpacity: 1,
+		strokeWidth: 2,
+		fillOpacity: 0.5,
+	});
+	$('area').click(function(e) {
+		e.preventDefault();
+		console.log('test', e.target.dataset.unit_id);
+		return false;
+	});
+});
+</script>
+
+</div></body></html>
